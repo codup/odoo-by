@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_invoice">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="o">
+            <!-- Multicompany -->
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <t t-set="context" t-value="o._context"></t>
+
+            <div class="page">
+
+<table frame="VOID" cellspacing="0" cols="30" rules="NONE" border="0">
+	<colgroup><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="21"/><col width="21"/><col width="21"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="27"/><col width="27"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/></colgroup>
+	<tbody>
+		<tr>
+			<td style="border-top: 3px solid #000000; border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="15" width="342" height="19" align="LEFT"><b><font size="2">Поставщик:</font></b></td>
+			<td style="border-top: 3px solid #000000; border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="15" width="356" align="RIGHT" valign="TOP">Форма № 868</td>
+			</tr>
+		<tr>
+			<td style="border-left: 3px solid #000000" height="19" align="LEFT"><b><font size="2"><br/></font></b></td>
+			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT"><b><font size="2"> </font></b></td>
+			<td style="border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="15" rowspan="5" align="CENTER"><i><font size="5">СЧЕТ-ФАКТУРА</font></i></td>
+			</tr>
+		<tr>
+			<td style="border-left: 3px solid #000000" height="19" align="LEFT"><b><font size="2"><br/></font></b></td>
+			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT"><b><font size="2">УНП  </font></b></td>
+			</tr>
+		<tr>
+			<td style="border-left: 3px solid #000000" height="19" align="LEFT"><b><font size="2"><br/></font></b></td>
+			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT"><b><font size="2">ОКПО  </font></b></td>
+			</tr>
+		<tr>
+			<td style="border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="15" height="18" align="LEFT"><b><font size="2">Адрес:</font></b></td>
+			</tr>
+		<tr>
+			<td style="border-left: 3px solid #000000" height="19" align="LEFT"><b><font size="2"><br/></font></b></td>
+			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT" valign="TOP"><b><font size="2"> </font></b></td>
+			</tr>
+		<tr>
+			<td style="border-left: 3px solid #000000" height="19" align="LEFT"><b><font size="2"><br/></font></b></td>
+			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT" valign="TOP"><b><font size="2">тел.  </font></b></td>
+			<td style="border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="15" align="CENTER" valign="TOP"><b><i><font size="3">№  от </font></i></b></td>
+			</tr>
+		<tr>
+			<td style="border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="15" height="20" align="LEFT"><b><font size="2">Расчетный счет №  </font></b></td>
+			<td style="border-left: 3px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-right: 3px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 3px solid #000000" height="20" align="LEFT"><b><font size="2"><br/></font></b></td>
+			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT" valign="TOP"><b><font size="2">в  , код    </font></b></td>
+			<td style="border-left: 3px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-right: 3px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+		</tr>
+		<tr>
+			<td height="20" align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 3px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000; border-right: 3px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 3px solid #000000" colspan="7" rowspan="2" height="37" align="LEFT" valign="TOP"><b><font size="2">Грузоотправитель</font></b></td>
+			<td style="border-right: 3px solid #000000" colspan="8" rowspan="2" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 3px solid #000000" colspan="5" align="CENTER" valign="MIDDLE"><font size="2">Склад</font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="5" align="CENTER" valign="MIDDLE"><font size="2">№ опер.</font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 3px solid #000000" colspan="5" align="CENTER" valign="MIDDLE"><font size="2">Шифр покуп.</font></td>
+			</tr>
+		<tr>
+			<td style="border-bottom: 3px solid #000000; border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="15" rowspan="3" align="CENTER" valign="TOP">Распоряжение об оплате или отказе от акцепта</td>
+			</tr>
+		<tr>
+			<td style="border-bottom: 3px solid #000000; border-left: 3px solid #000000" colspan="7" rowspan="2" height="37" align="LEFT"><b><font size="2">Ст. отправления</font></b></td>
+			<td style="border-bottom: 3px solid #000000; border-right: 3px solid #000000" colspan="8" rowspan="2" align="LEFT"><font size="2"><br/></font></td>
+			</tr>
+		<tr>
+			</tr>
+		<tr>
+			<td style="border-top: 3px solid #000000; border-left: 3px solid #000000" colspan="7" rowspan="3" height="48" align="LEFT" valign="MIDDLE"><b><font size="2">Плательщик<br/>и его адрес</font></b></td>
+			<td style="border-top: 3px solid #000000; border-right: 3px solid #000000" colspan="23" rowspan="3" align="LEFT" valign="TOP"><font size="2"> <br/> <br/>тел. </font></td>
+			</tr>
+		<tr>
+			</tr>
+		<tr>
+			</tr>
+		<tr>
+			<td style="border-bottom: 3px solid #000000; border-left: 3px solid #000000" colspan="7" height="16" align="LEFT" valign="MIDDLE"><b><font size="2">Отпущено(принято)</font></b></td>
+			<td style="border-bottom: 3px solid #000000; border-right: 3px solid #000000" colspan="23" align="LEFT"><font size="2"><br/></font></td>
+			</tr>
+		<tr>
+			<td style="border-top: 3px solid #000000; border-left: 3px solid #000000" colspan="8" rowspan="2" height="32" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 1px solid #000000; border-right: 3px solid #000000" colspan="22" rowspan="2" align="LEFT"><font size="2"><br/></font></td>
+			</tr>
+		<tr>
+			</tr>
+		<tr>
+			<td style="border-bottom: 3px solid #000000; border-left: 3px solid #000000" colspan="8" rowspan="2" height="32" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-bottom: 3px solid #000000; border-right: 3px solid #000000" colspan="22" rowspan="2" align="LEFT"><font size="2"><br/></font></td>
+			</tr>
+		<tr>
+			</tr>
+		<tr>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="8" rowspan="2" height="32" align="CENTER" valign="TOP"><font size="2">Договор-заказ<br/> </font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="8" rowspan="2" align="CENTER" valign="TOP"><font size="2">Дата отгрузки</font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="14" rowspan="2" align="CENTER" valign="TOP"><font size="2">Способ отправления и № квит./накл.</font></td>
+			</tr>
+		<tr>
+			</tr>
+		<tr>
+			<td height="13" align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+		</tr>
+		<tr>
+			<td colspan="30" height="16" align="LEFT"><i><font size="2">Дополнение: Счет действителен в течение  банковских дней.</font></i></td>
+			</tr>
+		<tr>
+			<td height="13" align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+		</tr>
+		<tr>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 3px solid #000000; border-right: 1px solid #000000" colspan="6" height="32" align="CENTER" valign="MIDDLE"><font size="2">Наименование</font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="3" align="CENTER" valign="MIDDLE"><font size="2">Ед. изм.</font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="3" align="CENTER" valign="MIDDLE"><font size="2">Кол-во</font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="4" align="CENTER" valign="MIDDLE"><font size="2">Цена, руб.</font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="4" align="CENTER" valign="MIDDLE"><font size="2">Сумма, руб.</font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="2" align="CENTER" valign="MIDDLE"><font size="2">Ставка НДС</font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="4" align="CENTER" valign="MIDDLE"><font size="2">Сумма НДС, руб.</font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 3px solid #000000" colspan="4" align="CENTER" valign="MIDDLE"><font size="2">Сумма с НДС, руб.</font></td>
+			</tr>
+		<tr>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 3px solid #000000" colspan="6" height="16" align="RIGHT"><b><font size="2">ИТОГО:</font></b></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-right: 1px solid #000000" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="4" align="RIGHT" valign="MIDDLE" sdval="0" sdnum="1049;0;0"><b><font size="2">0</font></b></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 3px solid #000000" colspan="4" align="RIGHT" valign="MIDDLE" sdval="0" sdnum="1049;0;0"><b><font size="2">0</font></b></td>
+			</tr>
+		<tr>
+			<td height="17" align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+		</tr>
+		<tr>
+			<td colspan="30" height="16" align="LEFT"><font size="2"> </font></td>
+			</tr>
+		<tr>
+			<td colspan="30" height="16" align="LEFT"><font size="2"> </font></td>
+			</tr>
+		<tr>
+			<td height="17" align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+		</tr>
+		<tr>
+			<td colspan="4" height="16" align="LEFT"><b><font size="2">Сумма НДС:</font></b></td>
+			<td style="border-bottom: 1px solid #000000" colspan="26" align="JUSTIFY"><b><i><font size="2"><br/></font></i></b></td>
+			</tr>
+		<tr>
+			<td colspan="4" height="16" align="LEFT"><b><font size="2">Всего с НДС:</font></b></td>
+			<td style="border-bottom: 1px solid #000000" colspan="26" align="JUSTIFY"><b><i><font size="2"><br/></font></i></b></td>
+			</tr>
+		<tr>
+			<td height="17" align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+		</tr>
+		<tr>
+			<td colspan="30" height="16" align="LEFT"><i><font size="2">При получении товара необходимо иметь доверенность с кодами УНН и ОКПО</font></i></td>
+			</tr>
+		<tr>
+			<td height="17" align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+		</tr>
+		<tr>
+			<td height="16" align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td colspan="4" align="LEFT"><font size="2">Руководитель</font></td>
+			<td style="border-bottom: 1px solid #000000" colspan="7" align="LEFT"><font size="2"><br/></font></td>
+			<td colspan="11" align="LEFT"><font size="2">/ /</font></td>
+			</tr>
+		<tr>
+			<td height="16" align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td colspan="2" align="LEFT" valign="MIDDLE"><font size="2">М.П.</font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+		</tr>
+		<tr>
+			<td height="16" align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td colspan="4" align="LEFT"><font size="2">Гл. бухгалтер</font></td>
+			<td style="border-bottom: 1px solid #000000" colspan="7" align="LEFT"><font size="2"><br/></font></td>
+			<td colspan="11" align="LEFT"><font size="2">/ /</font></td>
+			</tr>
+		<tr>
+			<td height="17" align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT" valign="MIDDLE"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+			<td align="LEFT"><font size="2"><br/></font></td>
+		</tr>
+		<tr>
+			<td colspan="30" height="16" align="CENTER"><font size="2">Отпустил (разрешил) ____________________                    Получил (принял) ____________________</font></td>
+			</tr>
+	</tbody>
+</table>
+
+            </div>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>

@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    Odoo
@@ -6,8 +6,13 @@
 #
 ##############################################################################
 
-import models
-import lib
-import report
+from openerp import api, models, fields
+
+class res_partner(models.Model):
+    _name = 'res.partner'
+    _inherit = 'res.partner'
+
+    unp = fields.Char('UNP')
+    okpo = fields.Char('OKPO')
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -8,22 +8,39 @@
 
 {
     'name': 'Belarus - Documents',
-    'version': '0.0',
+    'version': '0.1',
     'summary': 'Первичные документы',
     'description': """
-!!!Don't download. The module under development!!!
 The module for print documents in accordance laws of Belarus.
 ============================================================
 Возможности:
-    * Пока нет
+    * Счет-протокол
+    * Счет-фактура
+    * Акт выполненных работ
+    * Товарная накладная
+    * Товарно-транспортная накладная
     """,
     'author': 'CodUP',
     'website': 'http://codup.com',
     'category': 'Localization',
     'sequence': 0,
-    'depends': [],
+    'depends': ['sale'],
     'demo': [],
-    'data': [],
+    'data': [
+        'data/l10n_by_doc_data.xml',
+        'views/account_invoice_view.xml',
+        'views/res_partner_view.xml',
+        'views/res_company_view.xml',
+        'views/res_users_view.xml',
+        'report/l10n_by_doc_report.xml',
+        'report/report_order.xml',
+        'report/report_invoice.xml',
+        'report/report_bill.xml',
+        'report/report_waybill.xml',
+        'report/report_act.xml',
+        'data/bill_action_data.xml',
+    ],
+    'css': ['static/src/css/l10n_by_doc.css'],
     'installable': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
