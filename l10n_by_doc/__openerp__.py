@@ -8,7 +8,7 @@
 
 {
     'name': 'Belarus - Documents',
-    'version': '0.1',
+    'version': '0.2',
     'summary': 'Первичные документы',
     'description': """
 The module for print documents in accordance laws of Belarus.

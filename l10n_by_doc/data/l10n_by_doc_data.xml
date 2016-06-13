@@ -2,6 +2,10 @@
 <openerp>
     <data noupdate="1">
 
+        <record id="base.BYR" model="res.currency">
+            <field name="active" eval="True"/>
+        </record>
+
         <record id="base.main_company" model="res.company">
             <field name="currency_id" ref="base.BYR"/>
         </record>

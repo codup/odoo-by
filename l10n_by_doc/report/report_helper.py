@@ -68,6 +68,10 @@ class QWebHelper(object):
         if partner.street2: repr.append(partner.street2)
         return ', '.join(repr)
 
+    def bank(self, partner):
+        bank = partner.env['res.partner.bank'].search([('partner_id', '=', partner.id)], limit=1)
+        return bank
+
     def representation(self, partner):
         repr = []
         if partner.name: repr.append(partner.name)
