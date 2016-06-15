@@ -12,6 +12,8 @@
                 <t t-set="company" t-value="res_company"></t>
             </t>
             <t t-set="context" t-value="o._context"></t>
+            <t t-set="bank" t-value="helper.bank(company.partner_id)"></t>
+            <t t-set="pbank" t-value="helper.bank(o.partner_id)"></t>
 
             <div class="page">
 
@@ -24,31 +26,31 @@
 			</tr>
 		<tr>
 			<td style="border-left: 3px solid #000000" height="19" align="LEFT"><b><font size="2"><br/></font></b></td>
-			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT"><b><font size="2"> </font></b></td>
+			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT"><b><font size="2"><t t-esc="company.name or ''"/> </font></b></td>
 			<td style="border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="15" rowspan="5" align="CENTER"><i><font size="5">СЧЕТ-ФАКТУРА</font></i></td>
 			</tr>
 		<tr>
 			<td style="border-left: 3px solid #000000" height="19" align="LEFT"><b><font size="2"><br/></font></b></td>
-			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT"><b><font size="2">УНП  </font></b></td>
+			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT"><b><font size="2">УНП  <t t-esc="company.unp or ''"/></font></b></td>
 			</tr>
 		<tr>
 			<td style="border-left: 3px solid #000000" height="19" align="LEFT"><b><font size="2"><br/></font></b></td>
-			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT"><b><font size="2">ОКПО  </font></b></td>
+			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT"><b><font size="2">ОКПО  <t t-esc="company.okpo or ''"/></font></b></td>
 			</tr>
 		<tr>
 			<td style="border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="15" height="18" align="LEFT"><b><font size="2">Адрес:</font></b></td>
 			</tr>
 		<tr>
 			<td style="border-left: 3px solid #000000" height="19" align="LEFT"><b><font size="2"><br/></font></b></td>
-			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT" valign="TOP"><b><font size="2"> </font></b></td>
+			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT" valign="TOP"><b><font size="2"> <t t-esc="helper.address(company)"/><br/>тел.  <t t-esc="company.phone or ''"/></font></b></td>
 			</tr>
 		<tr>
-			<td style="border-left: 3px solid #000000" height="19" align="LEFT"><b><font size="2"><br/></font></b></td>
-			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT" valign="TOP"><b><font size="2">тел.  </font></b></td>
-			<td style="border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="15" align="CENTER" valign="TOP"><b><i><font size="3">№  от </font></i></b></td>
+			<td style="border-left: 3px solid #000000" height="19" align="LEFT"><b><font size="2"></font></b></td>
+			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT" valign="TOP"><b><font size="2"></font></b></td>
+			<td style="border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="15" align="CENTER" valign="TOP"><b><i><font size="3">№  <t t-esc="o.number or ''"/> от <t t-esc="helper.ru_date(o.date_invoice)"/></font></i></b></td>
 			</tr>
 		<tr>
-			<td style="border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="15" height="20" align="LEFT"><b><font size="2">Расчетный счет №  </font></b></td>
+			<td style="border-left: 3px solid #000000; border-right: 3px solid #000000" colspan="15" height="20" align="LEFT"><b><font size="2">Расчетный счет №  <t t-esc="bank.acc_number or ''"/></font></b></td>
 			<td style="border-left: 3px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
 			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
 			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
@@ -67,7 +69,7 @@
 		</tr>
 		<tr>
 			<td style="border-left: 3px solid #000000" height="20" align="LEFT"><b><font size="2"><br/></font></b></td>
-			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT" valign="TOP"><b><font size="2">в  , код    </font></b></td>
+			<td style="border-right: 3px solid #000000" colspan="14" align="LEFT" valign="TOP"><b><font size="2">в  <t t-esc="bank.bank_name or ''"/>, код   <br/> <t t-esc="helper.address(bank.bank_id)"/> </font></b></td>
 			<td style="border-left: 3px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
 			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
 			<td align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
@@ -85,7 +87,7 @@
 			<td style="border-right: 3px solid #000000" align="CENTER" valign="TOP"><b><i><font size="3"><br/></font></i></b></td>
 		</tr>
 		<tr>
-			<td height="20" align="LEFT"><font size="2"><br/></font></td>
+			<td style="border-left: 3px solid #000000" height="20" align="LEFT"><font size="2"><br/></font></td>
 			<td align="LEFT"><font size="2"><br/></font></td>
 			<td align="LEFT"><font size="2"><br/></font></td>
 			<td align="LEFT"><font size="2"><br/></font></td>
@@ -134,7 +136,7 @@
 			</tr>
 		<tr>
 			<td style="border-top: 3px solid #000000; border-left: 3px solid #000000" colspan="7" rowspan="3" height="48" align="LEFT" valign="MIDDLE"><b><font size="2">Плательщик<br/>и его адрес</font></b></td>
-			<td style="border-top: 3px solid #000000; border-right: 3px solid #000000" colspan="23" rowspan="3" align="LEFT" valign="TOP"><font size="2"> <br/> <br/>тел. </font></td>
+			<td style="border-top: 3px solid #000000; border-right: 3px solid #000000" colspan="23" rowspan="3" align="LEFT" valign="TOP"><font size="2"> <t t-esc="o.partner_id.name or ''"/><br/> <t t-esc="helper.address(o.partner_id)"/><br/>тел. <t t-esc="o.partner_id.phone or ''"/></font></td>
 			</tr>
 		<tr>
 			</tr>
@@ -239,7 +241,17 @@
 			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="2" align="CENTER" valign="MIDDLE"><font size="2">Ставка НДС</font></td>
 			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="4" align="CENTER" valign="MIDDLE"><font size="2">Сумма НДС, руб.</font></td>
 			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 3px solid #000000" colspan="4" align="CENTER" valign="MIDDLE"><font size="2">Сумма с НДС, руб.</font></td>
-			</tr>
+		</tr>
+        <tr t-foreach="o.invoice_line_ids" t-as="line">
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 3px solid #000000; border-right: 1px solid #000000" colspan="6" height="32" align="CENTER" valign="MIDDLE"><font size="2"><t t-esc="line.name or ''"/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="3" align="CENTER" valign="MIDDLE"><font size="2"><t t-esc="line.uom_id.name or ''"/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="3" align="CENTER" valign="MIDDLE"><font size="2"><t t-esc="line.quantity or ''"/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="4" align="CENTER" valign="MIDDLE"><font size="2"><t t-esc="line.price_unit or ''"/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="4" align="CENTER" valign="MIDDLE"><font size="2"><t t-esc="(('%.2f')%(line.price_unit*line.quantity)).replace('.',',') or ''"/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="2" align="CENTER" valign="MIDDLE"><font size="2">20%</font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="4" align="CENTER" valign="MIDDLE"><font size="2"><t t-esc="(('%.2f')%(line.price_unit*line.quantity*0.2)).replace('.',',') or ''"/></font></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 3px solid #000000" colspan="4" align="CENTER" valign="MIDDLE"><font size="2"><t t-esc="(('%.2f')%(line.price_unit*line.quantity + line.price_unit*line.quantity*0.2)).replace('.',',') or ''"/></font></td>
+		</tr>
 		<tr>
 			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 3px solid #000000" colspan="6" height="16" align="RIGHT"><b><font size="2">ИТОГО:</font></b></td>
 			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
@@ -258,8 +270,8 @@
 			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
 			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000" align="LEFT"><font size="2"><br/></font></td>
 			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-right: 1px solid #000000" align="LEFT"><font size="2"><br/></font></td>
-			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="4" align="RIGHT" valign="MIDDLE" sdval="0" sdnum="1049;0;0"><b><font size="2">0</font></b></td>
-			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 3px solid #000000" colspan="4" align="RIGHT" valign="MIDDLE" sdval="0" sdnum="1049;0;0"><b><font size="2">0</font></b></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="4" align="RIGHT" valign="MIDDLE" sdval="0" sdnum="1049;0;0"><b><font size="2"><t t-esc="o.amount_tax or '0.00'"/></font></b></td>
+			<td style="border-top: 3px solid #000000; border-bottom: 3px solid #000000; border-left: 1px solid #000000; border-right: 3px solid #000000" colspan="4" align="RIGHT" valign="MIDDLE" sdval="0" sdnum="1049;0;0"><b><font size="2"><t t-esc="o.amount_total or ''"/></font></b></td>
 			</tr>
 		<tr>
 			<td height="17" align="LEFT"><font size="2"><br/></font></td>
@@ -333,11 +345,11 @@
 		</tr>
 		<tr>
 			<td colspan="4" height="16" align="LEFT"><b><font size="2">Сумма НДС:</font></b></td>
-			<td style="border-bottom: 1px solid #000000" colspan="26" align="JUSTIFY"><b><i><font size="2"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000" colspan="26" align="JUSTIFY"><b><i><font size="2">(<t t-esc="helper.in_words(o.amount_tax).capitalize()"/>) белорусских рублей<br/></font></i></b></td>
 			</tr>
 		<tr>
 			<td colspan="4" height="16" align="LEFT"><b><font size="2">Всего с НДС:</font></b></td>
-			<td style="border-bottom: 1px solid #000000" colspan="26" align="JUSTIFY"><b><i><font size="2"><br/></font></i></b></td>
+			<td style="border-bottom: 1px solid #000000" colspan="26" align="JUSTIFY"><b><i><font size="2">(<t t-esc="helper.in_words(o.amount_total).capitalize()"/>) белорусских рублей<br/></font></i></b></td>
 			</tr>
 		<tr>
 			<td height="17" align="LEFT"><font size="2"><br/></font></td>
