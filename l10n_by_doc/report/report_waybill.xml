@@ -12,6 +12,8 @@
                 <t t-set="company" t-value="res_company"></t>
             </t>
             <t t-set="context" t-value="o._context"></t>
+            <t t-set="bank" t-value="helper.bank(company.partner_id)"></t>
+            <t t-set="pbank" t-value="helper.bank(o.partner_id)"></t>
 
             <div class="page">
 
@@ -325,8 +327,8 @@
 			<td align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
 			<td colspan="5" rowspan="2" align="LEFT" valign="MIDDLE" bgcolor="#FFFFFF"><font face="Times New Roman">УНП</font></td>
 			<td align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="13" rowspan="2" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;@"><font face="Times New Roman"><br/></font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="13" rowspan="2" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;@"><font face="Times New Roman"><br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="13" rowspan="2" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;@"><font face="Times New Roman"><t t-esc="company.unp or ''"/><br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="13" rowspan="2" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;@"><font face="Times New Roman"><t t-esc="o.partner_id.unp or ''"/><br/></font></td>
 			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="18" rowspan="2" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;@"><font face="Times New Roman"><br/></font></td>
 			<td align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
 			<td align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
@@ -1806,7 +1808,7 @@
 			<td align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
 		</tr>
 		<tr>
-			<td colspan="2" height="15" align="RIGHT" bgcolor="#FFFFFF"><font face="Times New Roman">"</font></td>
+			<!-- <td colspan="2" height="15" align="RIGHT" bgcolor="#FFFFFF"><font face="Times New Roman">"</font></td>
 			<td style="border-bottom: 1px solid #000000" colspan="4" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;@"><font face="Times New Roman"><br/></font></td>
 			<td colspan="2" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman">"</font></td>
 			<td align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
@@ -1815,7 +1817,8 @@
 			<td colspan="3" align="RIGHT" bgcolor="#FFFFFF" sdval="20" sdnum="1049;"><font face="Times New Roman">20</font></td>
 			<td style="border-bottom: 1px solid #000000" colspan="3" align="LEFT" bgcolor="#FFFFFF" sdnum="1049;0;@"><font face="Times New Roman"><br/></font></td>
 			<td align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
-			<td colspan="3" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman">г.</font></td>
+			<td colspan="3" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman">г.</font></td> -->
+            <td colspan="42" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman"><t t-esc="helper.ru_date(o.date_invoice)"/><br/></font></td>
 			<td align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
 			<td align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
 			<td align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
@@ -2044,7 +2047,7 @@
 		<tr>
 			<td colspan="16" height="15" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman">Грузоотправитель</font></td>
 			<td align="CENTER" bgcolor="#FFFFFF"><b><i><font face="Times New Roman"><br/></font></i></b></td>
-			<td style="border-bottom: 1px solid #000000" colspan="115" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
+			<td style="border-bottom: 1px solid #000000" colspan="115" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman"><t t-esc="company.name or ''"/> <t t-esc="helper.address(company)"/><br/></font></td>
 			</tr>
 		<tr>
 			<td height="15" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
@@ -2069,7 +2072,7 @@
 		<tr>
 			<td colspan="16" height="15" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman">Грузополучатель</font></td>
 			<td align="CENTER" bgcolor="#FFFFFF"><b><i><font face="Times New Roman"><br/></font></i></b></td>
-			<td style="border-bottom: 1px solid #000000" colspan="115" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
+			<td style="border-bottom: 1px solid #000000" colspan="115" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman"><t t-esc="o.partner_id.name or ''"/> <t t-esc="helper.address(o.partner_id)"/><br/></font></td>
 			</tr>
 		<tr>
 			<td height="15" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
@@ -2346,29 +2349,30 @@
 			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="10" align="CENTER" valign="MIDDLE" bgcolor="#FFFFFF" sdval="10" sdnum="1049;"><b><font face="Times New Roman">10</font></b></td>
 			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="9" align="CENTER" valign="MIDDLE" bgcolor="#FFFFFF" sdval="11" sdnum="1049;"><b><font face="Times New Roman">11</font></b></td>
 			</tr>
-		<tr>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="31" height="20" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="9" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="9" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="13" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><br/></font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="12" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><br/></font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="7" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0%"><font face="Times New Roman"><br/></font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="11" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><br/></font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="12" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><br/></font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="9" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><br/></font></td>
+        <t t-set="total_quantity" t-value="int(sum([line.quantity for line in o.invoice_line_ids]))"/>
+		<tr t-foreach="o.invoice_line_ids" t-as="line">
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="31" height="20" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman"><t t-esc="line.name or ''"/><br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="9" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman"><t t-esc="line.uom_id.name or ''"/><br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="9" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman"><t t-esc="line.quantity or ''"/><br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="13" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><t t-esc="line.price_unit or ''"/><br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="12" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><t t-esc="(('%.2f')%(line.price_unit*line.quantity)).replace('.',',') or ''"/><br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="7" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0%"><font face="Times New Roman">20%<br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="11" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><t t-esc="(('%.2f')%(line.price_unit*line.quantity*0.2)).replace('.',',') or ''"/><br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="12" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><t t-esc="(('%.2f')%(line.price_unit*line.quantity + line.price_unit*line.quantity*0.2)).replace('.',',') or ''"/><br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="9" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><t t-esc="line.quantity or ''"/><br/></font></td>
 			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="10" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
 			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="9" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
 			</tr>
 		<tr>
 			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="31" height="18" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman">ИТОГО</font></td>
 			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="9" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman">x</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="9" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="9" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman"><t t-esc="(('%d')%(total_quantity)) or ''"/><br/></font></td>
 			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="13" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman">x</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="12" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="12" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><t t-esc="o.amount_untaxed or ''"/><br/></font></td>
 			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="7" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0%"><font face="Times New Roman">x</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="11" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><br/></font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="12" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><br/></font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="9" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="11" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><t t-esc="o.amount_tax or '0.00'"/><br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="12" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><t t-esc="o.amount_total or ''"/><br/></font></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="9" align="CENTER" bgcolor="#FFFFFF" sdnum="1049;0;0"><font face="Times New Roman"><t t-esc="(('%d')%(total_quantity)) or ''"/><br/></font></td>
 			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="10" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
 			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan="9" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman"><br/></font></td>
 			</tr>
@@ -2458,7 +2462,7 @@
 		<tr>
 			<td colspan="13" height="15" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman" size="1">Всего сумма НДС</font></td>
 			<td align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman" size="1"><br/></font></td>
-			<td style="border-bottom: 1px solid #000000" colspan="118" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman" size="1"><br/></font></td>
+			<td style="border-bottom: 1px solid #000000" colspan="118" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman" size="1"><t t-esc="helper.in_words(o.amount_tax).capitalize()"/> белорусских рублей<br/></font></td>
 			</tr>
 		<tr>
 			<td height="15" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman" size="1"><br/></font></td>
@@ -2480,7 +2484,7 @@
 		<tr>
 			<td colspan="17" height="15" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman" size="1">Всего стоимость с НДС</font></td>
 			<td align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman" size="1"><br/></font></td>
-			<td style="border-bottom: 1px solid #000000" colspan="114" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman" size="1"><br/></font></td>
+			<td style="border-bottom: 1px solid #000000" colspan="114" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman" size="1"><t t-esc="helper.in_words(o.amount_total).capitalize()"/> белорусских рублей<br/></font></td>
 			</tr>
 		<tr>
 			<td height="15" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman" size="1"><br/></font></td>
@@ -2510,7 +2514,7 @@
 			<td align="CENTER" valign="TOP" bgcolor="#FFFFFF" sdnum="1049;0;@"><i><font face="Times New Roman" size="1"><br/></font></i></td>
 			<td colspan="23" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman" size="1">Всего количество грузовых мест</font></td>
 			<td align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman" size="1"><br/></font></td>
-			<td style="border-bottom: 1px solid #000000" colspan="46" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman" size="1"><br/></font></td>
+			<td style="border-bottom: 1px solid #000000" colspan="46" align="CENTER" bgcolor="#FFFFFF"><font face="Times New Roman" size="1"><t t-esc="helper.in_words(total_quantity or 0).capitalize()"/><br/></font></td>
 			</tr>
 		<tr>
 			<td height="15" align="LEFT" bgcolor="#FFFFFF"><font face="Times New Roman" size="1"><br/></font></td>
