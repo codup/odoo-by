@@ -6,10 +6,9 @@
 #
 ##############################################################################
 
-from openerp import api, models, fields
+from odoo import api, fields, models
 
-class res_company(models.Model):
-    _name = 'res.company'
+class Company(models.Model):
     _inherit = 'res.company'
 
     unp = fields.Char('UNP', related='partner_id.unp')

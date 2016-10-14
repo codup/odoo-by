@@ -6,10 +6,9 @@
 #
 ##############################################################################
 
-from openerp import models, fields, api, _
+from odoo import api, fields, models, _
 
-class account_invoice(models.Model):
-    _name = 'account.invoice'
+class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
     @api.multi

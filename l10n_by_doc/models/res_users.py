@@ -6,10 +6,9 @@
 #
 ##############################################################################
 
-from openerp import api, models, fields
+from odoo import api, fields, models
 
-class res_users(models.Model):
-    _name = 'res.users'
+class Users(models.Model):
     _inherit = 'res.users'
 
     print_facsimile = fields.Boolean('Print Facsimile', related='company_id.print_facsimile')
