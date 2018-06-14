@@ -2,13 +2,14 @@
 ##############################################################################
 #
 #    Odoo
-#    Copyright (C) 2016 CodUP (<http://codup.com>).
+#    Copyright (C) 2016-2018 CodUP (<http://codup.com>).
 #
 ##############################################################################
 
 from datetime import datetime
 import re
 from pytils import numeral,dt
+from odoo.tools import pycompat
 
 
 class QWebHelper(object):
@@ -26,7 +27,7 @@ class QWebHelper(object):
             width,
             height,
             type, 
-            str(img))
+            str(pycompat.to_text(img)))
         return toreturn
 
     def numer(self, name):
@@ -89,5 +90,3 @@ class QWebHelper(object):
         if bank and bank.bank_name: repr.append(u"в банке " + bank.bank_name)
         if bank and bank.bank_bic: repr.append(u"БИК " + bank.bank_bic)
         return ', '.join(repr)
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
