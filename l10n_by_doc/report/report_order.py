@@ -7,7 +7,7 @@
 ##############################################################################
 
 from odoo import api, models
-from report_helper import QWebHelper
+from odoo.addons.l10n_by_doc.report.report_helper import QWebHelper
 
 class BySaleOrderReport(models.AbstractModel):
     _name = 'report.l10n_by_doc.report_order'
