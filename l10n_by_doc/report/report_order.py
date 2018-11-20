@@ -13,7 +13,7 @@ class BySaleOrderReport(models.AbstractModel):
     _name = 'report.l10n_by_doc.report_order'
 
     @api.multi
-    def get_report_values(self, docids, data=None):
+    def _get_report_values(self, docids, data=None):
         docs = self.env['sale.order'].browse(docids)
         return {
             'helper': QWebHelper(),

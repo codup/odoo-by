@@ -11,8 +11,8 @@ from odoo import api, fields, models
 class Company(models.Model):
     _inherit = 'res.company'
 
-    unp = fields.Char('UNP', related='partner_id.unp')
-    okpo = fields.Char('OKPO', related='partner_id.okpo')
+    unp = fields.Char('UNP', related='partner_id.unp', readonly=False)
+    okpo = fields.Char('OKPO', related='partner_id.okpo', readonly=False)
     chief_id = fields.Many2one('res.users', 'Chief')
     accountant_id = fields.Many2one('res.users', 'General Accountant')
     print_facsimile = fields.Boolean('Print Facsimile', help="Check this for adding Facsimiles of responsible persons to documents.")

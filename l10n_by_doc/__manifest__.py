@@ -24,7 +24,7 @@ The module for print documents in accordance laws of Belarus.
     'website': 'http://codup.com',
     'category': 'Localization',
     'sequence': 0,
-    'depends': ['sale'],
+    'depends': ['sale_management'],
     'demo': [],
     'data': [
         'data/l10n_by_doc_data.xml',
