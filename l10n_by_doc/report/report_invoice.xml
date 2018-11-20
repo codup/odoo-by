@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 <data>
+
 <template id="report_invoice">
-    <t t-call="web.basic_layout">
+    <t t-call="web.html_container">
         <t t-foreach="docs" t-as="o">
             <!-- Multicompany -->
             <t t-if="o and 'company_id' in o">
@@ -14,8 +15,9 @@
             <t t-set="context" t-value="o._context"></t>
             <t t-set="bank" t-value="helper.bank(company.partner_id)"></t>
             <t t-set="pbank" t-value="helper.bank(o.partner_id)"></t>
-
-            <div class="page">
+            
+            <div class="article o_report_layout_standard"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <div class="page">
 
 <table frame="VOID" cellspacing="0" cols="30" rules="NONE" border="0">
 	<colgroup><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="21"/><col width="21"/><col width="21"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="27"/><col width="27"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/><col width="23"/></colgroup>
@@ -513,6 +515,7 @@
 	</tbody>
 </table>
 
+                </div>
             </div>
         </t>
     </t>
